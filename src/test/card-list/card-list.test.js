@@ -1,19 +1,18 @@
 import React from "react";
 import { configure, shallow } from "enzyme";
 import chai, { expect } from "chai";
-import App from "../App";
 import chaiEnzyme from "chai-enzyme";
-
 import Adapter from "enzyme-adapter-react-16";
+import { CardList } from "../../components/card-list/card-list.component";
+import App from "../../App";
 
 configure({ adapter: new Adapter() });
 
-describe("<App>", function() {
-  it("Should have title", () => {
+describe("<CardList>", function() {
+  it("Should be", function() {
     const wrapper = shallow(<App />);
-    const title = <h1>Staff library</h1>;
-
-    expect(wrapper).to.contain(title);
+    
+    expect(wrapper.find(CardList)).to.have.length(1);
   });
 
   chai.use(chaiEnzyme());
